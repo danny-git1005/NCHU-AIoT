@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Linear Regression</h1>
+
+        <!-- Form to input parameters -->
+        <form action="/" method="POST">
+            <label for="a">Slope (a):</label>
+            <input type="text" name="a" required>
+
+            <label for="noise">Noise level:</label>
+            <input type="text" name="noise" required>
+
+            <label for="num_points">Number of points:</label>
+            <input type="text" name="num_points" required>
+
+            <input type="submit" value="Generate and Predict">
+        </form>
+
+        <!-- If results are available, display them below the form -->
+        {% if img_data %}
+            <h2>Regression Result</h2>
+            <p><strong>Slope:</strong> {{ slope }}</p>
+            <p><strong>Intercept:</strong> {{ intercept }}</p>
+            <img src="data:image/png;base64,{{ img_data }}" alt="Regression plot">
+        {% endif %}
+    </div>
+</body>
+</html>
